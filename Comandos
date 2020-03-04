@@ -3,3 +3,7 @@ docker run -d -p 5000:5000 flask-trambo:latest
 
 
 Enlaces utiles
+https://confluence.atlassian.com/bitbucketserver/ssh-user-keys-for-personal-use-776639793.html
+https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html
+
+https://medium.com/@doedotdev/docker-flask-a-simple-tutorial-bbcb2f4110b5
