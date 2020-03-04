@@ -6,6 +6,8 @@ services:
       - 5000:5000
     depends_on:
       - redisdb
+    environment:
+      - ENV_USER="[ELMER]"
 
   redisdb:
     image: 'bitnami/redis:latest'
