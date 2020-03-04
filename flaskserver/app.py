@@ -1,7 +1,7 @@
 from flask import Flask
-from flask_redis import Redis
+#from flask_redis import Redis
 app = Flask(__name__)
-redis = Redis(app)
+#redis = Redis(app)
 
 @app.route('/')
 def hello():
