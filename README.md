@@ -25,7 +25,7 @@ A brief explanation of what the exercise consist is:
 ```
 ./
 │   README.md
-│   [docker-compose.yml](/docker-compose.yml)
+│   docker-compose.yml    
 │
 └───flaskserver
 │   |   app.py
@@ -46,3 +46,26 @@ A brief explanation of what the exercise consist is:
 ```
 
 ### [docker-compose.yml](/docker-compose.yml)
+This file allows run and comunicate multiple containers easly.
+The services declared were:
+- flaskserver
+For this service were nedeed build a specific image based on the Dockerfile located in the folder [/flasksserver](/flaskserver)
+```
+flaskserver:
+    build: flaskserver
+    ports:
+      - 5000:5000
+    depends_on:
+      - redisdb
+    environment:
+      - ENV_HOST=database #Debe ser el mismo nombre que el alias de redisdb
+      - ENV_PORT=6379
+      - ENV_DB=0
+    links:
+      - "redisdb:database"
+```
+
+
+- redisdb
+
+- staticserver
