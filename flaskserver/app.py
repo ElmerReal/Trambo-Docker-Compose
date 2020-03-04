@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello World- Trambo!-> ENV   "+USER
+    return "Hello World- Trambo!-> ENV   "+ENV_HOST
 
 @app.route('/1')
 def hello1():
