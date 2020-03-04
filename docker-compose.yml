@@ -11,8 +11,8 @@ services:
       - ENV_HOST=database
       - ENV_PORT=6379
       - ENV_DB=0
-      links:
-        - "redisdb:database"
+    links:
+      - "redisdb:database"
 
   redisdb:
     image: 'bitnami/redis:latest'
