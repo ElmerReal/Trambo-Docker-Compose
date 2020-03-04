@@ -8,14 +8,17 @@ r = redis.Redis(host=ENV_HOST, port=ENV_PORT, db=ENV_DB)
 r.mset({"Jhon": "22 years", "Jhon": "30 years"})
 app = Flask(__name__)
 
-@app.route('/flask/Guardar/<username>/<age>')
+@app.route('/save/<username>/<age>')
 def hello(username,age):
     r.set(username,age)
     return " [ "+username+" ] Guardado correctamente"
 
-@app.route('/flask/Listar')
+@app.route('/list')
 def hello1():
-    return str(r.keys("*"))
+    cadena = ""
+    for x in r.keys("*"):
+        cadena = cadena + x + ", "+ r.get(x)+"\n"
+    return str(cadena)
 
 @app.route('/')
 def hello2s():
