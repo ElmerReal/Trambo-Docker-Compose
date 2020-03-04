@@ -25,7 +25,7 @@ A brief explanation of what the exercise consist is:
 ```
 ./
 │   README.md
-│   docker-compose.yml    
+│   [docker-compose.yml](/docker-compose.yml)
 │
 └───flaskserver
 │   |   app.py
