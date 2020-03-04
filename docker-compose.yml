@@ -1,6 +1,6 @@
 version: "s1.0"
 services:
   FlaskServer:
-    build: FlaskServer   
+    build: FlaskServer
     ports:
-    – 5000:5000
+      – 5000:5000
