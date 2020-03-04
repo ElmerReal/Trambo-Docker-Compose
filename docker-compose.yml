@@ -2,10 +2,8 @@ version: "2.0"
 services:
   flaskserver:
     build: flaskserver
-    ports:
-      - 80:5000
     expose:
-      - 80
+      - 5000
     depends_on:
       - redisdb
   
