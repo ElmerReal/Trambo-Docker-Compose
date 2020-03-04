@@ -8,7 +8,7 @@ r = redis.Redis(host=ENV_HOST, port=ENV_PORT, db=ENV_DB)
 r.mset({"Jhon": "22 years", "Jhon": "30 years"})
 app = Flask(__name__)
 
-@app.route('guardar/<username>/<age>')
+@app.route('/Guardar/<username>/<age>')
 def hello(username,age):
     r.set(username,age)
     return "Guardado correctamente"
