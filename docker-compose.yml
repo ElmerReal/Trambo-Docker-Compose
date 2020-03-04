@@ -3,4 +3,4 @@ services:
   FlaskServer:
     build: FlaskServer
     ports:
-      – 5000:5000
+    - 5000:5000
