@@ -49,7 +49,13 @@ A brief explanation of what the exercise consist is:
 This file allows run and comunicate multiple containers easly.
 The services declared were:
 - flaskserver
-For this service were nedeed build a specific image based on the Dockerfile located in the folder [/flasksserver](/flaskserver)
+
+This service works on the port number 5000
+
+For this service were needed build a specific image based on the Dockerfile located in the folder [/flaskserver](/flaskserver)
+
+Also were declared a link with redisdb service in order to communicate the redis db with this flask application.
+
 ```
 flaskserver:
     build: flaskserver
@@ -65,7 +71,27 @@ flaskserver:
       - "redisdb:database"
 ```
 
-
 - redisdb
+
+This service works on the port number 5000
+
+For this service were needed build a specific image based on the Dockerfile located in the folder [/flaskserver](/flaskserver)
+
+Also were declared a link with redisdb service in order to communicate the redis db with this flask application.
+
+```
+flaskserver:
+    build: flaskserver
+    ports:
+      - 5000:5000
+    depends_on:
+      - redisdb
+    environment:
+      - ENV_HOST=database #Debe ser el mismo nombre que el alias de redisdb
+      - ENV_PORT=6379
+      - ENV_DB=0
+    links:
+      - "redisdb:database"
+```
 
 - staticserver
