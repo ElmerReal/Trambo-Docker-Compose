@@ -17,7 +17,7 @@ def hello(username,age):
 def hello1():
     cadena = ""
     for x in r.keys("*"):
-        cadena = cadena + x + ", "+ r.get(x)+"\n"
+        cadena = cadena + str(x) + ", "+ str(r.get(x))+"\n"
     return str(cadena)
 
 @app.route('/')
