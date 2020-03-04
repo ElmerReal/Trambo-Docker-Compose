@@ -17,7 +17,7 @@ def hello(username,age):
 def hello1():
     return str(r.keys("*"))
 
-@app.route('/flask/')
+@app.route('/')
 def hello2s():
     return "Bienvenido a la aplicacion python"
 
