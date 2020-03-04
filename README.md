@@ -17,7 +17,7 @@ A brief explanation of what the exercise consist is:
 
 - There have to be a redis container, which will store data sended by the flask container.
 - There have to be a nginx container, which will serve static files to the user.
-- There have to be another nginx container, which will work as a proxy in order to redirect the trafic to the flask container or to the nginx static files container dependin on a specific prefix. 
+- There have to be another nginx container, which will work as a proxy in order to redirect the trafic to the flask container or to the nginx static files container depending on a specific prefix. 
 
 
 ## Folder Hierarchy
