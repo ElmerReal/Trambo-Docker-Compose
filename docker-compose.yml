@@ -10,3 +10,11 @@ services:
     image: 'bitnami/redis:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+  staticserver:
+    image: nginx
+    ports:
+      - 80:80
+  proxy:
+    image: nginx
+    ports:
+      - 8080:80
