@@ -4,8 +4,7 @@ import os
 ENV_HOST = os.getenv('ENV_HOST')
 ENV_PORT = os.getenv('ENV_PORT')
 ENV_DB = os.getenv('ENV_DB')
-r = redis.Redis(host=ENV_HOST, port=ENV_PORT, db=ENV_DB)
-r.mset({"Croatia": "Zagreb", "Bahamas": "Nassau"})
+
 
 app = Flask(__name__)
 
@@ -13,8 +12,10 @@ app = Flask(__name__)
 def hello():
     return "Hello World- Trambo!-> ENV   "+USER
 
-@app.route('/get1')
+@app.route('/1')
 def hello1():
+    r = redis.Redis(host=ENV_HOST, port=ENV_PORT, db=ENV_DB)
+    r.mset({"Croatia": "Zagreb", "Bahamas": "Nassau"})
     return r.get("Bahamas")
 
 if __name__ == '__main__':
