@@ -6,7 +6,6 @@ services:
       - 5000:5000
     depends_on:
       - redisdb
-  
   redisdb:
     image: 'bitnami/redis:latest'
     environment:
