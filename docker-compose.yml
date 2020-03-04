@@ -8,7 +8,7 @@ services:
     depends_on:
       - redisdb
     environment:
-      - ENV_HOST=database
+      - ENV_HOST=database #Debe ser el mismo nombre que el alias de redisdb
       - ENV_PORT=6379
       - ENV_DB=0
     links:
@@ -22,10 +22,10 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       
   staticserver:
-    image: nginx
+    build: nginx_static
     ports:
       - 80:80
   proxy:
-    image: nginx
+    build: nginx_proxy
     ports:
       - 8080:80
