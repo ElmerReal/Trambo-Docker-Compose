@@ -2,7 +2,7 @@
 Marzo 4, 2020. Ejercicio de docker compose
 
 ## Introduction
-To solve this problem, i use some the following technologies:
+To solve this problem, i use the following technologies:
 - Flask: is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions.
 
 - Nginx is a web server which can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.
