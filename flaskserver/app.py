@@ -10,12 +10,12 @@ app = Flask(__name__)
 
 @app.route('guardar/<username>/<age>')
 def hello(username,age):
-    r.append(username,age)
+    r.set(username,age)
     return "Guardado correctamente"
 
 @app.route('/Listar')
 def hello1():
-    return r.keys("*")
+    return r.get("*")
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
