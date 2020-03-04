@@ -15,7 +15,7 @@ def hello(username,age):
 
 @app.route('/Listar')
 def hello1():
-    return r.keys("*")
+    return str(r.keys("*"))
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
