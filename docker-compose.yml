@@ -1,4 +1,5 @@
 version: "2.0"
+
 services:
   flaskserver:
     build: flaskserver
@@ -7,9 +8,11 @@ services:
     depends_on:
       - redisdb
     environment:
-      - ENV_HOST=54.202.8.127
+      - ENV_HOST=database
       - ENV_PORT=6379
       - ENV_DB=0
+      links:
+        - "redisdb:database"
 
   redisdb:
     image: 'bitnami/redis:latest'
