@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route('/Guardar/<username>/<age>')
 def hello(username,age):
     r.set(username,age)
-    return "Guardado correctamente"
+    return " [ "+username+" ] Guardado correctamente"
 
 @app.route('/Listar')
 def hello1():
