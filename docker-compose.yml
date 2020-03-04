@@ -7,12 +7,14 @@ services:
     depends_on:
       - redisdb
     environment:
-      - ENV_USER="[ELMER]"
+      - ENV_HOST=localhost
+      - ENV_PORT=6379
+      - ENV_DB=0
 
   redisdb:
     image: 'bitnami/redis:latest'
     ports:
-      - 81:6379
+      - 6379:6379
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       
