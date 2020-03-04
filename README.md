@@ -17,7 +17,7 @@ A brief explanation of what the exercise consist is:
 
 - There have to be a redis container, which will store data sended by the flask container.
 - There have to be a nginx container, which will serve static files to the user.
-- There have to be another nginx container, which will work as a proxy in order to redirect the trafic to the flask container or the nginx static files container dependin on a specific prefix. 
+- There have to be another nginx container, which will work as a proxy in order to redirect the trafic to the flask container or to the nginx static files container dependin on a specific prefix. 
 
 
 ## Folder Hierarchy
@@ -47,7 +47,9 @@ A brief explanation of what the exercise consist is:
 
 ### [docker-compose.yml](/docker-compose.yml)
 This file allows run and comunicate multiple containers easly.
+
 The services declared were:
+
 - flaskserver
 
 This service works on the port number 5000
@@ -73,25 +75,54 @@ flaskserver:
 
 - redisdb
 
-This service works on the port number 5000
+This service works on the port number 6379
 
-For this service were needed build a specific image based on the Dockerfile located in the folder [/flaskserver](/flaskserver)
+This service uses a redi image from the docker hub.
 
-Also were declared a link with redisdb service in order to communicate the redis db with this flask application.
 
 ```
-flaskserver:
-    build: flaskserver
+redisdb:
+    image: 'bitnami/redis:latest'
     ports:
-      - 5000:5000
-    depends_on:
-      - redisdb
+      - 6379:6379
     environment:
-      - ENV_HOST=database #Debe ser el mismo nombre que el alias de redisdb
-      - ENV_PORT=6379
-      - ENV_DB=0
-    links:
-      - "redisdb:database"
+      - ALLOW_EMPTY_PASSWORD=yes
 ```
+
 
 - staticserver
+
+This service works on the port number 8080
+
+For this service were needed build a specific image based on the Dockerfile located in the folder [/nginx_static](/nginx_static)
+
+
+```
+staticserver:
+    build: nginx_static
+    ports:
+      - 8080:80
+```
+
+- proxy
+
+This service works on the port number 80
+
+For this service were needed build a specific image based on the Dockerfile located in the folder [/nginx_proxy](/nginx_proxy)
+
+Also were declared a link with the flask service and the nginx static files server in order to be able to redirect the traffic.
+
+```
+  proxy:
+    build: nginx_proxy
+    ports:
+      - 80:80
+    environment:
+      - ENV_PORT=80
+      - ENV_HOST=54.202.8.127
+      - ENV_PYTHON_HOST=pythonapp
+      - ENV_PYTHON_PORT=5000
+    links:
+      - "flaskserver:pythonapp"
+      - "staticserver:nginxstatic"
+```

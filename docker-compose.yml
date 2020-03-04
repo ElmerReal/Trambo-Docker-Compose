@@ -25,6 +25,7 @@ services:
     build: nginx_static
     ports:
       - 8080:80
+      
   proxy:
     build: nginx_proxy
     ports:
